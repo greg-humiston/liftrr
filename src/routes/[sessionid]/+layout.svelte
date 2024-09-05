@@ -14,10 +14,26 @@
 <div class="tile-full">
 	<div class="side-menu-container">
 		<div class={`side-menu-inner-container ${expandedClassName}`}>
+				<div class="route-icon-container">
+					<div>
+						<button class="route-button">
+							<img class="route-button-icon" src="/home.png" alt="home button">
+						</button>
+					</div>
+					<div>
+						<button class="route-button">
+							<img class="route-button-icon" src="/home.png" alt="home button">
+						</button>
+					</div>
+					<div>
+						<button class="route-button">
+							<img class="route-button-icon" src="/home.png" alt="home button">
+						</button>
+					</div>
+				</div>
 			<button class="expand-button" on:click={handleExpandClick}>
 				<img class="expand-button-icon" src={expandedButtonIconSrc} alt="sidebar expand arrow" />
 			</button>
-
 		</div>
 	</div>
 	<div><slot/></div>
@@ -41,17 +57,37 @@
 		justify-content: center;
 	}
 
+	.route-icon-container {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-end;
+		overflow: hidden;
+	}
+
 	.expand-button {
-		border: 1px;
 		background-color: transparent;
     border: none;
     cursor: pointer;
 		margin-top: 5px;
+		padding-right: 5px;
 	}
 
 	.expand-button-icon {
 		width: 15px;
 		height: 15px;
+	}
+
+	.route-button {
+		background-color: transparent;
+    border: none;
+    cursor: pointer;
+		padding-right: 0px;
+	}
+	.route-button-icon {
+		width: 50px;
+		height: 50px;
 	}
 
 	.side-menu-inner-container {
@@ -68,6 +104,6 @@
 
 	.side-menu-inner-container.expanded {
 		width: 100px;
-		transition: width .15s ease-in;
+		transition: width .10s ease-in;
 	}
 </style>
