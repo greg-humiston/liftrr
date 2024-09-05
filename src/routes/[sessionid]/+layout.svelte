@@ -1,20 +1,21 @@
 <script>
 	// TODO: replace using runes
-	let isExpanded = false;
+	let isExpanded = $state(false);
 
 	const handleExpandClick = () => {
 		isExpanded = !isExpanded;
+		console.log('updated, isExpanded:', isExpanded);
 	};
 
-	const expandedClassName = isExpanded ? ' expanded' : '';
-
+	let expandedClassName = $derived(isExpanded ? ' expanded' : '');
+	let expandedButtonIconSrc = $derived(isExpanded ? "/arrow_back.png"  : "/arrow_forward.png" );
 </script>
 
 <div class="tile-full">
 	<div class="side-menu-container">
-		<div class="side-menu-inner-container">
-			<button class={`expand-button${expandedClassName}`} on:click={handleExpandClick}>
-				<img class="expand-button-icon" src="/arrow_forward.png" alt="sidebar expand arrow" />
+		<div class={`side-menu-inner-container ${expandedClassName}`}>
+			<button class="expand-button" on:click={handleExpandClick}>
+				<img class="expand-button-icon" src={expandedButtonIconSrc} alt="sidebar expand arrow" />
 			</button>
 
 		</div>
@@ -61,9 +62,11 @@
 		border-left-width: 0px;
 		border-radius: 0px 3px 3px 0px;
 		transition: width .15s ease-in;
+		display: flex;
+		justify-content: flex-end;
 	}
 
-	.side-menu-inner-container.expanded  {
+	.side-menu-inner-container.expanded {
 		width: 100px;
 		transition: width .15s ease-in;
 	}
